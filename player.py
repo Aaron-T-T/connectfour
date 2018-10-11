@@ -4,7 +4,8 @@ class Player:
         self.choice = self.get_choice
     
     def get_name(self):
-        pass
+        player1 = input("Please tell you player 1 name: ")
+        
     
     def get_choice(self):
         pass
