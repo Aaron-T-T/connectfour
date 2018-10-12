@@ -1,11 +1,13 @@
+from player import Player
 class Game:
     def __init__(self):
-        self.play_game = play_game()
-    
+        self.play_game = self.play_game()
+        
     
     def play_game(self):
-        pass
+        Player()
 
 
 if __name__ == "__main__":
-    pass
+    d = Game()
+    d.play_game()
