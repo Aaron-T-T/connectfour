@@ -1,0 +1,172 @@
+'''
+
+>>> from board import Board
+>>> new_board = Board(3,3)
+>>> new_board.width
+3
+>>> new_board.height
+3
+>>> new_board.board
+[[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
+
+>>> new_board.is_full()
+False
+
+>>> new_board.disp_board() #doctest: +NORMALIZE_WHITESPACE
+------
+<BLANKLINE>
+<BLANKLINE>      
+<BLANKLINE>  
+------
+1 2 3
+
+>>> new_board.check_win()
+False
+
+Check if adding a piece works correctly
+>>> new_board.add_piece(3,'x')
+>>> new_board.disp_board() #doctest: +NORMALIZE_WHITESPACE
+------
+<BLANKLINE>  
+<BLANKLINE>
+    x 
+------
+1 2 3
+
+Check vertical win condition
+>>> new_board = Board(6,7)
+>>> new_board.add_piece(3,'x')
+>>> new_board.add_piece(3,'x')
+>>> new_board.add_piece(3,'x')
+>>> new_board.add_piece(3,'x')
+>>> new_board.check_win()
+True
+
+>>> new_board.disp_board() #doctest: +NORMALIZE_WHITESPACE
+------------
+<BLANKLINE>      
+<BLANKLINE> 
+<BLANKLINE> 
+    x       
+    x       
+    x       
+    x       
+------------
+1 2 3 4 5 6 
+
+>>> new_board.add_piece(3,'x')
+>>> new_board.add_piece(3,'x')
+>>> new_board.add_piece(3,'x')
+>>> new_board.add_piece(3,'x')
+Traceback (most recent call last):
+    ...
+ValueError: Column Full
+
+
+Check horizontal win
+>>> new_board = Board(7,6)
+>>> new_board.add_piece(1,'o')
+>>> new_board.add_piece(2,'o')
+>>> new_board.add_piece(3,'o')
+>>> new_board.add_piece(4,'o')
+>>> new_board.check_win()
+True
+
+
+Check valid column numbers given
+>>> new_board = Board(7,6)
+>>> new_board.add_piece(0,'x')
+Traceback (most recent call last):
+    ...
+ValueError: Invalid Column
+
+>>> new_board.add_piece(1,'x')
+>>> new_board.add_piece(2,'x')
+>>> new_board.add_piece(3,'x')
+>>> new_board.add_piece(4,'x')
+>>> new_board.add_piece(5,'x')
+>>> new_board.add_piece(6,'x')
+>>> new_board.add_piece(7,'x')
+>>> new_board.add_piece(8,'x')
+Traceback (most recent call last):
+    ...
+ValueError: Invalid Column
+
+
+Check major diagonal win 
+>>> new_board = Board(7,6)
+>>> new_board.add_piece(1,'x')
+>>> new_board.add_piece(2,'o')
+>>> new_board.add_piece(2,'x')
+>>> new_board.add_piece(3,'o')
+>>> new_board.add_piece(3,'o')
+>>> new_board.add_piece(3,'x')
+>>> new_board.add_piece(4,'x')
+>>> new_board.add_piece(4,'o')
+>>> new_board.add_piece(4,'o')
+>>> new_board.add_piece(4,'x')
+>>> new_board.disp_board() #doctest: +NORMALIZE_WHITESPACE
+--------------
+<BLANKLINE>      
+<BLANKLINE>   
+      x       
+    x o       
+  x o o       
+x o o x       
+--------------
+1 2 3 4 5 6 7 
+>>> new_board.check_win()
+True
+
+
+check minor diagonal for win
+>>> new_board = Board(7,6)
+>>> new_board.add_piece(1,'x')
+>>> new_board.add_piece(1,'x')
+>>> new_board.add_piece(1,'x')
+>>> new_board.add_piece(1,'o')
+>>> new_board.add_piece(2,'x')
+>>> new_board.add_piece(2,'x')
+>>> new_board.add_piece(2,'o')
+>>> new_board.add_piece(3,'x')
+>>> new_board.add_piece(3,'o')
+>>> new_board.add_piece(4,'o')
+>>> new_board.disp_board() #doctest: +NORMALIZE_WHITESPACE
+--------------
+<BLANKLINE>        
+<BLANKLINE>   
+o             
+x o           
+x x o         
+x x x o       
+--------------
+1 2 3 4 5 6 7 
+>>> new_board.check_win()
+True
+
+
+check full board
+>>> new_board = Board(7,6)
+>>> for i in range(7):
+...     for j in range(6):
+...         new_board.add_piece(i+1,'x')
+        
+>>> new_board.disp_board() #doctest: +NORMALIZE_WHITESPACE
+--------------
+x x x x x x x 
+x x x x x x x 
+x x x x x x x 
+x x x x x x x 
+x x x x x x x 
+x x x x x x x 
+--------------
+1 2 3 4 5 6 7 
+>>> new_board.is_full()
+True
+
+'''
+
+
+
+
+
