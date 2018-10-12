@@ -12,7 +12,7 @@ class Player:
         pass
     
     def get_piece(self):
-        input('what will your piece be:  ')
+        a = input('what will your piece be:  ')
         
         
         
@@ -20,4 +20,4 @@ class Player:
 
 
 if __name__ == "__main__":
-    Player()
+    pass
