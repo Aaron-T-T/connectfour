@@ -5,7 +5,7 @@ class Game:
         
     
     def play_game(self):
-        Player()
+        Player('a')
 
 
 if __name__ == "__main__":
