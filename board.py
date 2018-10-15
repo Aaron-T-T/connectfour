@@ -50,11 +50,11 @@ class Board:
             for j in range(len(self.bd[0])):
                 if self.bd[i][j] == previousPiece:
                     samePieceCount += 1
-                if samePieceCount == 4:
-                    return True
                 else:
                     samePieceCount = 1
                     previousPiece = str(self.bd[i][j])
+                if samePieceCount == 4:
+                    return True
             samePieceCount = 0
             previousPiece = ""
         return False #Dummy Boi
@@ -68,5 +68,5 @@ if __name__ == "__main__":
     eyy.add_piece("*", 1)
     eyy.add_piece("*", 2)
     eyy.add_piece("*", 3)
-    eyy.add_piece("*", 4)
+    eyy.add_piece("*", 5)
     print(eyy.detect_win())
