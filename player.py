@@ -1,18 +1,24 @@
 class Player:
     def __init__(self,piece):
         self.name = self.get_name()
-        self.choice = self.get_choice()
         self.piece = piece
-#        self.piece = self.get_piece()
+
         
     
     def get_name(self):
-        name = input("What is your name:  ")        
-    def get_choice(self):
-        pass
+        self = input("What is your name:  ")
+        return self
+    def get_choice(self,Board):
+        choice = int(input(f"{self.players[self.turn].name} pick a column: "))
+        if choice <= 0:
+            print('The value can not be less than or equal to 0')
+            get_choice()
+        elif choice > self.board.width:
+            print('That is a value bigger than the board itself')
+            get_choice()
+        
+        
     
-#    def get_piece(self):
-#        str(input('what will your piece be:  '))
         
         
         
