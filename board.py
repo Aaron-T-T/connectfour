@@ -4,16 +4,26 @@ class Board:
     def __init__(self, width, height):
         self.width = width
         self.height = height
-        self.bd = [["O"] * width for i in range(height)]
+        self.bd = [[" "] * width for i in range(height)]
         
-    def displayBoard(self):
+    def disp_board(self):
         print()
-        print()
+        topString  = ""
+        countString = ""
+        for i in range(len(self.bd[0])):
+            topString += "- "
+        print(topString)
+        topString = ""
         for row in self.bd:
             for element in row:
                 print(str(element),end=' ')
             print()
-        print()
+        for i in range(1,len(self.bd[0])+1):
+            topString += "- "
+        print(topString)
+        for i in range(1,len(self.bd[0])+1):
+            countString += str(i) + " "
+        print(countString)
         print()
             
     def emptyBoard(self):
@@ -100,14 +110,5 @@ class Board:
 
 if __name__ == "__main__":
     eyy = Board(7, 6)
-    eyy.displayBoard()
-    eyy.add_piece("*", 1)
-    eyy.add_piece("*", 1)
-    eyy.add_piece("*", 1)
-    eyy.add_piece("*", 2)
-    eyy.add_piece("*",2)
-    for i in range(3):
-        eyy.add_piece("*",3)
-    for i in range(4):
-        eyy.add_piece("*", 4)
+    eyy.disp_board()
     print(eyy.detect_win())
