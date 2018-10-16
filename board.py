@@ -48,7 +48,7 @@ class Board:
         previousPiece = ""
         for i in range(len(self.bd)-1, -1, -1):
             for j in range(len(self.bd[0])):
-                if self.bd[i][j] == previousPiece:
+                if self.bd[i][j] == previousPiece and self.bd[i][j] != "O":
                     samePieceCount += 1
                 else:
                     samePieceCount = 1
@@ -57,16 +57,30 @@ class Board:
                     return True
             samePieceCount = 0
             previousPiece = ""
+        #Detect win vertically
+        for i in range(len(self.bd[0])):
+            for j in range(len(self.bd)-1, -1, -1):
+                if self.bd[j][i] == previousPiece and self.bd[j][i] != "O":
+                    samePieceCount += 1
+                else:
+                    samePieceCount = 1
+                    previousPiece = str(self.bd[j][i])
+                if samePieceCount == 4:
+                    return True
+            samePieceCount = 0
+            previousPiece = ""
+        #Detect win diagonally
         return False #Dummy Boi
                     
         
         
 
 if __name__ == "__main__":
-    eyy = Board(7, 5)
+    eyy = Board(7, 6)
     eyy.displayBoard()
     eyy.add_piece("*", 1)
+    eyy.add_piece("*", 1)
+    eyy.add_piece("*", 1)
     eyy.add_piece("*", 2)
-    eyy.add_piece("*", 3)
-    eyy.add_piece("*", 5)
+    eyy.add_piece("*",1)
     print(eyy.detect_win())
