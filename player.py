@@ -10,12 +10,7 @@ class Player:
         return self
     def get_choice(self,Board):
         choice = int(input(f"{self.players[self.turn].name} pick a column: "))
-        if choice <= 0:
-            print('The value can not be less than or equal to 0')
-            get_choice()
-        elif choice > self.board.width:
-            print('That is a value bigger than the board itself')
-            get_choice()
+        return int(choice)
         
         
     
