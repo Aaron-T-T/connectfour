@@ -44,9 +44,8 @@ class Board:
             return False
         column = int(column)
         for i in range((len(self.bd)-1),-1,-1):
-            if self.bd[i][column] == "O":
-                self.bd[i][column] = str(piece_string)
-                self.displayBoard()
+            if self.bd[i][column-1] == " ":
+                self.bd[i][column-1] = str(piece_string)
                 return True
         else:
             print("Column is Full")
@@ -58,7 +57,7 @@ class Board:
         previousPiece = ""
         for i in range(len(self.bd)-1, -1, -1):
             for j in range(len(self.bd[0])):
-                if self.bd[i][j] == previousPiece and self.bd[i][j] != "O":
+                if self.bd[i][j] == previousPiece and self.bd[i][j] != " ":
                     samePieceCount += 1
                 else:
                     samePieceCount = 1
@@ -70,7 +69,7 @@ class Board:
         #Detect win vertically
         for i in range(len(self.bd[0])):
             for j in range(len(self.bd)-1, -1, -1):
-                if self.bd[j][i] == previousPiece and self.bd[j][i] != "O":
+                if self.bd[j][i] == previousPiece and self.bd[j][i] != " ":
                     samePieceCount += 1
                 else:
                     samePieceCount = 1
@@ -82,7 +81,7 @@ class Board:
         #Detect win diagonally left-right
         for i in range(len(self.bd)-1, len(self.bd)-4, -1):
             for j in range(3):
-                if self.bd[i][j] == previousPiece and self.bd[i][j] != "O":
+                if self.bd[i][j] == previousPiece and self.bd[i][j] != " ":
                     samePieceCount += 1
                 else:
                     samePieceCount = 1
@@ -94,7 +93,7 @@ class Board:
         #Detect win diagonally right-left
         for i in range(3):
             for j in range(len(self.bd[0])-1, len(self.bd[0])-4, -1):
-                if self.bd[i][j] == previousPiece and self.bd[i][j] != "O":
+                if self.bd[i][j] == previousPiece and self.bd[i][j] != " ":
                     samePieceCount += 1
                 else:
                     samePieceCount = 1
@@ -110,5 +109,7 @@ class Board:
 
 if __name__ == "__main__":
     eyy = Board(7, 6)
+    eyy.disp_board()
+    eyy.add_piece("*",1)
     eyy.disp_board()
     print(eyy.detect_win())
