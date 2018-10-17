@@ -29,12 +29,12 @@ class Board:
     def emptyBoard(self):
         for i in range(self.height):
             for j in range(len(self.bd[0])):
-                self.bd[i][j] = "*"
+                self.bd[i][j] = " "
                 
     def is_full(self):
         for row in self.bd:
             for element in row:
-                if element == "O":
+                if element == " ":
                     return False
         return True
     
@@ -51,7 +51,7 @@ class Board:
             print("Column is Full")
             return False
         
-    def detect_win(self):
+    def check_win(self):
         #Detect win horizontally
         samePieceCount = 0
         previousPiece = ""
@@ -112,4 +112,11 @@ if __name__ == "__main__":
     eyy.disp_board()
     eyy.add_piece("*",1)
     eyy.disp_board()
-    print(eyy.detect_win())
+    for i in range(2):
+        eyy.add_piece("*",2)
+    for i in range(3):
+        eyy.add_piece("*",3)
+    for i in range(4):
+        eyy.add_piece("*",4)
+    eyy.disp_board()
+    print(eyy.check_win())
