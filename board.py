@@ -39,17 +39,18 @@ class Board:
         return True
     
     def add_piece(self, piece_string, column):
+        counter = 0
         if type(column) != int or int(column) > self.width or int(column) <= 0:
-            print("Invalid Column")
-            return False
+            raise ValueError("Invalid Column")
         column = int(column)
         for i in range((len(self.bd)-1),-1,-1):
             if self.bd[i][column-1] == " ":
                 self.bd[i][column-1] = str(piece_string)
-                return True
-        else:
-            print("Column is Full")
-            return False
+                break
+            else:
+                counter += 1
+        if counter == len(self.bd):
+            raise ValueError("Column Full")
         
     def check_win(self):
         #Detect win horizontally
@@ -108,15 +109,7 @@ class Board:
         
 
 if __name__ == "__main__":
-    eyy = Board(7, 6)
-    eyy.disp_board()
-    eyy.add_piece("*",1)
-    eyy.disp_board()
-    for i in range(2):
-        eyy.add_piece("*",2)
-    for i in range(3):
-        eyy.add_piece("*",3)
-    for i in range(4):
-        eyy.add_piece("*",4)
+    eyy = Board(6,7)
+    eyy.add_piece("a",1)
     eyy.disp_board()
     print(eyy.check_win())
