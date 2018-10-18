@@ -19,12 +19,16 @@ class Game:
                 self.board.disp_board()
                 self.choice = Player.get_choice(self,self.board)
                 self.board.add_piece(self.players[self.turn].piece,self.choice)
-                self.board.disp_board()
-                if self.board.detect_win():
+                
+                if self.board.check_win():
+                    self.board.disp_board()
+                    print(f'{self.players[self.turn].name} wins')
                     return
                 if self.board.is_full():
+                    self.board.disp_board()
+                    print('The board is full game over')
                     return
-        
+                self.turn = (self.turn+1)%2
             except Exception as e:
                 pass
         
