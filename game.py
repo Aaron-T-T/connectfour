@@ -8,6 +8,10 @@ class Game:
         
     
     def play_game(self):
+        '''
+            Plays 4 in a row
+        ''' 
+            
         print('Welcome to Connect Four')
         print('')
         print('Player 1, what is your name?')
@@ -18,7 +22,7 @@ class Game:
             try:
                 self.board.disp_board()
                 self.choice = Player.get_choice(self,self.board)
-                self.board.add_piece(self.players[self.turn].piece,self.choice)
+                self.board.add_piece(self.choice,self.players[self.turn].piece)
                 if self.board.check_win():
                     self.board.disp_board()
                     print(f'{self.players[self.turn].name} wins!')
