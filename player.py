@@ -9,7 +9,7 @@ class Player:
         self = input("What is your name:  ")
         return self
     def get_choice(self,Board):
-        choice = int(input(f"{self.players[self.turn].name} pick a column: "))
+        choice = int(input(f"{self.players[self.turn].name}, pick a column: "))
         return int(choice)
         
         
