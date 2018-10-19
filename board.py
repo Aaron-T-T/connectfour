@@ -78,14 +78,14 @@ class Board:
             samePieceCount = 0
             previousPiece = ""
         #Detect win diagonally left-right
-        for i in range(len(self.board)-1, len(self.board)-4, -1):
-            for j in range(3):
-                if self.board[i][j] == self.board[i+1][j+1] == self.board[i+2][j+2] == self.board[i+3][j+3] and self.board[i][j] != " ":
+        for i in range(3, self.height):
+            for j in range(self.width-3):
+                if self.board[i][j] == self.board[i-1][j+1] and self.board[i-1][j+1] and self.board[i-2][j+2] and self.board[i-2][j+2] == self.board[i-3][j+3] and self.board[i][j] != " ":
                     return True
         #Detect win diagonally right-left
-        for i in range(3):
-            for j in range(len(self.board[0])-1, len(self.board[0])-4, -1):
-                if self.board[i][j] == self.board[i-1][j-1] == self.board[i-1][j-1] == self.board[i-1][j-1] and self.board[i][j] != " ":
+        for i in range(self.width-3):
+            for j in range(self.height-3):
+                if self.board[i][j] == self.board[i+1][j-1] and self.board[i+1][j-1] and self.board[i+2][j-2] and self.board[i+2][j-2] == self.board[i+3][j-3] and self.board[i][j] != " ":
                     return True
         return False #Dummy Boi
                     
@@ -94,8 +94,3 @@ class Board:
 
 if __name__ == "__main__":
     new_board = Board(6,7)
-    new_board.add_piece(3,'x')
-    new_board.add_piece(3,'x')
-    new_board.add_piece(3,'x')
-    new_board.add_piece(3,'x')
-    new_board.check_win()
