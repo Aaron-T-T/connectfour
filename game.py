@@ -18,8 +18,8 @@ class Game:
         self.players.append(Player('*'))
         print('Player 2, what is your name?')
         self.players.append(Player('/'))
-        while True:
-            try:
+        while True:  
+            try:    # while loop
                 self.board.disp_board()
                 self.choice = Player.get_choice(self,self.board)
                 self.board.add_piece(self.choice,self.players[self.turn].piece)
