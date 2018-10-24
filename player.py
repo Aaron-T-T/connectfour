@@ -6,7 +6,7 @@ class Player:
         
     
     def get_name(self):
-        self = input("What is your name:  ")
+        self = input("What is your name:  ")  # bad idea to use self as the variable name
         return self
     def get_choice(self,Board):
         choice = int(input(f"{self.players[self.turn].name}, pick a column: "))
@@ -22,4 +22,7 @@ class Player:
 
 
 if __name__ == "__main__":
-    Player('a')
+    p = Player('a')
+    print(p.name)
+    print(p.piece)
+    
